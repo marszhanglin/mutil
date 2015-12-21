@@ -1,0 +1,5 @@
+select t.id ,t.name ,
+       (case when (select t.id from ORG_ORGANIZATION b where b.parentid = t.id and rownum =1 ) 
+       is not null then 'true' else 'false' end) as haschildren
+  from ORG_ORGANIZATION t
+ where t.parentid = 'root'  order by haschildren desc
