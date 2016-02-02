@@ -80,6 +80,10 @@ public class HttpInfo {
     public HttpInfo() {
         Properties properties = new Properties();
         InputStream is = HttpUtil.class.getClassLoader().getResourceAsStream("HttpInfo.properties");
+		if(null==is){
+            is = HttpUtil.class.getClassLoader().getResourceAsStream("assets/HttpInfo.properties");
+            
+        }
         try {
             properties.load(is);
             setIp(properties.getProperty("IP"));
